@@ -1,0 +1,25 @@
+{
+  "name": "colorformatjs",
+  "version": "1.1.0",
+  "description": "colorFormat.js是将颜色值转换为你需要格式的JavaScript库，现在仅支持浏览器支持的HEX/RGB/RGBA/HSL/HSLA等5种格式，任意格式之间互相转换。",
+  "main": "colorFormat.min.js",
+  "scripts": {
+    "build":"uglifyjs colorFormat.js --compress --mangle --output colorFormat.min.js",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/passerma/colorformatjs.git"
+  },
+  "keywords": [
+    "color",
+    "rgb",
+    "hex",
+    "convert"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "uglify-js": "^3.16.1"
+  }
+}
