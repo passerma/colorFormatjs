@@ -4,7 +4,7 @@
  * by 樊小书生: http://www.fxss5201.cn/ and passerma: https://www.passerma.com/
  * github: https://github.com/passerma
  */
-;(function (undefined) {
+; (function (undefined) {
     "use strict";
     var _global;
     /**
@@ -12,20 +12,20 @@
      * @param {string} options.color 待转换的颜色值
      * @param {string} options.format 转换颜色的格式
      */
-    var colorFormat = function(options) {
-        return new _colorFormat(options);    
+    var colorFormat = function (options) {
+        return new _colorFormat(options);
     };
     var _colorFormat = function (options) {
         var result,
-            color = options && options.color && options.color.replace(/\s/g, "").toLowerCase() || "#f00", // color ：默认值为 "#f00"
+            color = options && options.color && options.color.replace(/\s/g, "").toLowerCase() || "#fff", // color ：默认值为 "#fff"
             format = options && options.format && options.format.replace(/\s/g, "").toLowerCase() || "rgb", // format ：默认值为 "rgb"
             rgbType = format.indexOf("rgba") == -1 ? 0 : 1, // rgbType 0表示rgb，1表示rgba
             hslType = format.indexOf("hsla") == -1 ? 0 : 1; // hslType 0表示hsl，1表示hsla
-        if (color.indexOf("#") > -1){
-            if (format == "hex"){ // hex 转 hex
+        if (color.indexOf("#") > -1) {
+            if (format == "hex") { // hex 转 hex
                 result = this.hexToRgb(color);
                 result = this.rgbToHex(result);
-            } else if (format.indexOf("rgb") > -1){ // hex 转 rgb/rgba
+            } else if (format.indexOf("rgb") > -1) { // hex 转 rgb/rgba
                 result = this.hexToRgb(color, rgbType);
             } else if (format.indexOf("hsl") > -1) { // hex 转 hsl/hsla
                 result = this.hexToRgb(color);
@@ -49,23 +49,23 @@
         } else {
             var defineColor = this.defineColor,
                 resultRgb;
-            for(var i = 0,len = defineColor.length; i < len; i++){
-                if(color == defineColor[i].name){
+            for (var i = 0, len = defineColor.length; i < len; i++) {
+                if (color == defineColor[i].name) {
                     resultRgb = defineColor[i].hex;
                     break;
                 }
             }
-            if(resultRgb && resultRgb.length > 0){
-                if (format == "hex"){ // hex 转 hex
+            if (resultRgb && resultRgb.length > 0) {
+                if (format == "hex") { // hex 转 hex
                     result = this.hexToRgb(resultRgb);
                     result = this.rgbToHex(result);
-                } else if (format.indexOf("rgb") > -1){ // hex 转 rgb/rgba
+                } else if (format.indexOf("rgb") > -1) { // hex 转 rgb/rgba
                     result = this.hexToRgb(resultRgb, rgbType);
                 } else if (format.indexOf("hsl") > -1) { // hex 转 hsl/hsla
                     result = this.hexToRgb(resultRgb);
                     result = this.rgbToHsl(result, hslType);
                 }
-            }else{
+            } else {
                 alert("参数color暂未定义");
             }
         }
@@ -79,12 +79,12 @@
             { name: "yellow", hex: "#ff0" },
             { name: "green", hex: "#0f0" },
             { name: "cyan", hex: "#0ff" },
-            { name: "blue", hex: "#00f" }, 
+            { name: "blue", hex: "#00f" },
             { name: "violet", hex: "#ee82ee" },
             { name: "black", hex: "#000" },
             { name: "white", hex: "#fff" }
         ],
-        getRgb: function(rgb, type){
+        getRgb: function (rgb, type) {
             /**
              * 传入字符串的rgb，如 "rgb(255,0,255)" ，获取rgb的各个参数值
              */
@@ -106,7 +106,7 @@
                     ("rgb(" + [red, green, blue].join(",") + ")")
             }
         },
-        getHsl: function(hsl, type){
+        getHsl: function (hsl, type) {
             /**
              * 传入字符串的hsl，如 "hsl(300,100%,50%)" ，获取hsl的各个参数值
              */
@@ -128,7 +128,7 @@
                     ("hsl(" + [h, s, l].join(",") + ")")
             }
         },
-        rgbToHex: function(rgb) {
+        rgbToHex: function (rgb) {
             /**
              * 传入通过getRgb获取的rgb对象，将其转换为hex格式
              */
@@ -189,7 +189,7 @@
                     ("hsl(" + [h, s, l].join(",") + ")")
             }
         },
-        hexToRgb: function(hex, type) {
+        hexToRgb: function (hex, type) {
             /**
              * 传入hex格式，如 "#ff00ff" ，转换为rgb格式
              */
@@ -227,7 +227,7 @@
                     ("rgb(" + [red, green, blue].join(",") + ")")
             }
         },
-        hslToRgb: function(hsl, type) {
+        hslToRgb: function (hsl, type) {
             /**
              * 传入通过getHsl获取的Hsl对象，将其转换为rgb格式
              */
@@ -269,11 +269,11 @@
         }
     };
     // 最后将插件对象暴露给全局对象
-    _global = (function(){ return this || (0, eval)('this'); }());
+    _global = (function () { return this || (0, eval)('this'); }());
     if (typeof module !== "undefined" && module.exports) {
         module.exports = colorFormat;
     } else if (typeof define === "function" && define.amd) {
-        define(function(){return colorFormat;});
+        define(function () { return colorFormat; });
     } else {
         !('colorFormat' in _global) && (_global.colorFormat = colorFormat);
     }
